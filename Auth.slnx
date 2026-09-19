@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Auth.Api/Auth.Api.csproj" />
+    <Project Path="src/Auth.Core/Auth.Core.csproj" />
+    <Project Path="src/Auth.Infrastructure/Auth.Infrastructure.csproj" />
+  </Folder>
+</Solution>
