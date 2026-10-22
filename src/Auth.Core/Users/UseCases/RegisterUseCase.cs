@@ -26,7 +26,7 @@ namespace Auth.Core.Users.UseCases
                 HashedPassword = hashedPassword,
                 FirstName = request.FirstName,
                 LastName =  request.LastName,
-                Role = Role.Visieur
+                Role = Role.Visiteur
             };
 
             await _repository.AddAsync(user, ct);
