@@ -22,7 +22,7 @@ namespace Auth.Core.Users.UseCases
             var user = new User
             {
                 Id = Guid.CreateVersion7(),
-                Email = request.Email,
+                Email = request.Email.Trim().ToLowerInvariant(),
                 HashedPassword = hashedPassword,
                 FirstName = request.FirstName,
                 LastName =  request.LastName,

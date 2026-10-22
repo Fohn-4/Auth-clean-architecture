@@ -62,4 +62,26 @@ public class RegisterUseCaseTests
         await Assert.ThrowsAsync<DuplicateEmailException>( 
             () => sut.ExecuteAsync(request, CancellationToken.None));
     }
+
+    [Fact]
+    public async Task Register_normalize_email()
+    {
+        //Arrange 
+        var repository = Substitute.For<IUserRepository>();
+        var hasher = Substitute.For<IPasswordHasher>();
+
+        var sut = new RegisterUseCase(repository, hasher);
+        var request = new RegisterRequest
+        {
+          Email = "Jean.BON@mail.com",
+          Password = "secret123"  
+        };
+
+        //Act
+        await sut.ExecuteAsync(request, CancellationToken.None);
+
+        //Assert
+        var persistedUser = (User)repository.ReceivedCalls().Single().GetArguments()[0]!;
+        Assert.Equal("jean.bon@mail.com", persistedUser.Email);
+    }
 }
